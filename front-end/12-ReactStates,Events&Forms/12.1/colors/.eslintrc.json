@@ -1,8 +1,0 @@
-{
-  "root": true,
-  "parser": "babel-eslint",
-  "extends": ["trybe-frontend"],
-  "rules": {
-    "react/prop-types": "off"
-  }
-}
