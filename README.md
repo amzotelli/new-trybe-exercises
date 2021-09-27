@@ -1,1 +1,1 @@
-# new-trybe-exercises
+Aqui estarão exercícios de prática referente aos conteúdos aprendidos na Trybe. o primeiro bloco de conteúdo aprendi Unix & Bash, no segundo bloco estou aprendendo sobre Git, GitHUb e SSH, que foi quando criei esse repositório
