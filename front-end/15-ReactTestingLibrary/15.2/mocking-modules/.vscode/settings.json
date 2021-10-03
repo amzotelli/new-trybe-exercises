@@ -1,3 +1,4 @@
 {
-  "editor.fontFamily": "'Fira Code', monospace"
+  "editor.fontFamily": "'Fira Code', monospace",
+  "todo-tree.tree.showCountsInTree": true
 }
