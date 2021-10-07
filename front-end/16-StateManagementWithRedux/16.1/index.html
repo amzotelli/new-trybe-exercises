@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Redux basic example</title>
+        <!-- importação do redux via cdn -->
+        <script src='https://unpkg.com/redux@latest/dist/redux.min.js'></script>
+    </head>
+    <body>
+        <div>
+          Clicked: <span id=“value”>0</span> times
+          <button id=“increment”>+</button>
+          <button id=“decrement”>-</button>
+          <button id=“incrementBy10”>Adiciona 10</button>
+        </div>
+        <script>
+        // Exemplo de Action
+          // const action = {
+          //   type: ‘ADD_ITEM’,
+          //   value: 10,
+          // };
+          // boa prática criar constantes para não erra a string
+          const INCREMENT = "INCREMENT";
+          const DECREMENT = "DECREMENT";
+          // Criação do Reducer
+          function counterReducer(state = { clicks: 0, likes: 0}, action) {
+            switch (action.type) {
+              // state = state + 1;
+              case INCREMENT:
+                return {
+                  ...state,
+                  clicks: state.clicks + action.value,
+                };
+              case DECREMENT:
+                return {
+                  ...state,
+                  clicks: state.clicks - 1,
+                }
+              default:
+                return state;
+            }
+          };
+          // Cria a Store = estado global
+          const store = Redux.createStore(
+            counterReducer,
+            // configuração para o Redux dev tools funcionar
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+          );
+          const incrementAction = {
+            type: INCREMENT,
+            value: 1
+          };
+          // add o evento ao botão increment
+          document.getElementById("increment")
+            .addEventListener("click", () => {
+              store.dispatch(incrementAction)
+            });
+          // add o evento ao botão decrementar
+          document.getElementById("decrement")
+            .addEventListener("click", () => {
+              store.dispatch({ type: DECREMENT })
+            });
+          // add o evento ao botão incrementar 10
+          document.getElementById("incrementBy10")
+            .addEventListener("click", () => {
+              store.dispatch({ type: INCREMENT, value: 10 })
+            });
+          // Toda vez que a store for atualizada a aplicação é atualizada
+          store.subscribe(() => {
+            document.getElementById("value").innerHTML = store.getState().clicks;
+          })
+        </script>
+        </body>
+</html>
